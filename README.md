@@ -11,3 +11,5 @@ The idea is to:
 ## See Also
 
 [Text-To-Socket](https://github.com/AmadeusITGroup/Assistive-Webdriver/tree/9fba81946a3d95a205e276ed34c55cc4a8c00c2e/components/text-to-socket-engine) engine which is part of the Assistive Webdriver toolkit
+
+[Google Cloud TTS](https://cloud.google.com/text-to-speech/docs)
