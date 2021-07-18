@@ -1,0 +1,34 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "midl",
+            "type": "shell",
+            "command": "midl /h SAPI_Engine.h SAPI_Engine/SAPI_Engine.idl /out SAPI_Engine",
+            "problemMatcher": []
+        },
+        {
+            "label": "rc",
+            "type": "shell",
+            "command": "rc SAPI_ENGINE/resource.rc",
+            "problemMatcher": [],
+            "dependsOn": ["midl"]
+        },
+        {
+            "label": "cvt",
+            "type": "shell",
+            "command": "cvtres /MACHINE:x64 /OUT:SAPI_ENGINE/resource.obj SAPI_ENGINE/resource.res",
+            "problemMatcher": [],
+            "dependsOn": ["rc"]
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "cl SAPI_ENGINE/resource.obj SAPI_ENGINE/*.cpp /LD /link /DEF:SAPI_ENGINE/SAPI_Engine.def /OUT:SAPI_ENGINE/SAPI_Engine.dll",
+            "problemMatcher": [],
+            "dependsOn": ["cvt"]
+        }
+    ]
+}
